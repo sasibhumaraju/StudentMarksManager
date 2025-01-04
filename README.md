@@ -4,14 +4,18 @@
 The Student Marks Manager is a Console Based Java-based application designed to manage student marks data. It allows users to load student marks from a JSON file into a database, extract the data into a CSV file, and delete all student records from the database. The application leverages various Java techniques such as I/O operations, JDBC for database interactions, JSON parsing, and multithreading.
 
 ## Project Structure
-- **src/**: Contains all the Java source files.
-  - **App.java**: The main entry point of the application.
-  - **StudentsData.java**: Contains the `StudentsData` class and the nested `Student` class.
-  - **JdbcDB.java**: Handles database operations.
-  - **JsonToCSVService.java**: Provides services to load JSON data into the database and extract data to a CSV file.
-  - **JsonToCSVServiceV2.java**: Extends `JsonToCSVService` to provide functionality for loading multiple JSON files.
-- **resources/**: Contains resource files.
-  - **students.json**: Sample JSON file with student data.
+```plaintext
+Student Marks Manager
+├── src
+│   ├── App.java
+│   ├── StudentsData.java
+│   ├── JdbcDB.java
+│   ├── JsonToCSVService.java
+│   └── JsonToCSVServiceV2.java
+├── resources
+│   └── students.json
+└── README.md
+```
 
 ## Functionalities
 1. **Load JSON File**: Load student marks data from a JSON file into the database.
