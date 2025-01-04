@@ -70,7 +70,7 @@ public class JsonToCSVServiceV2 extends JsonToCSVService {
 
         // divide all students objects into chunks and create task for each chunk to load into DB
         int chunkSize = students.size()/10 == 0? 1 : students.size()/10;
-        List<Task> tasks = new ArrayList<Task>();
+        List<Task> tasks = new LinkedList<Task>();
         Optional<JdbcDB> db = JdbcDB.connect();
         for( int i=0; i<students.size(); i+=chunkSize ) {
             int fromIndex = i;
