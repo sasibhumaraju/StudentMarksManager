@@ -44,7 +44,7 @@ public class JsonToCSVService {
                     parallelPushToDB(db.get(),students.getStudents());
                     System.out.println("\ninfo ==> File updated to DB\n\n");
                     break;
-                } else { System.out.println("info ==> db failed to response..");}
+                } else { System.out.println("error ==> db failed to response..");}
 
             } catch (FileNotFoundException e) {
                 System.out.println("info ==> what buddy! provide valid json file location..");
@@ -56,7 +56,7 @@ public class JsonToCSVService {
         }
     }
 
-    private static void parallelPushToDB(JdbcDB dbRef, List<StudentsData.Student> students) throws InterruptedException {
+    protected static void parallelPushToDB(JdbcDB dbRef, List<StudentsData.Student> students) throws InterruptedException {
         
         int chunkLength = students.size()/4;
         
@@ -70,7 +70,7 @@ public class JsonToCSVService {
        
     }
 
-    private static synchronized void chunkPush(JdbcDB dbRef, List<StudentsData.Student> students, int toIndex, int fromtIndex) {
+    protected static synchronized void chunkPush(JdbcDB dbRef, List<StudentsData.Student> students, int toIndex, int fromtIndex) {
         List<StudentsData.Student> chunk = students.subList(toIndex, fromtIndex);
         dbRef.updateStudents(chunk);
     }
