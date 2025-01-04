@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +20,6 @@ public class JsonToCSVServiceV2 extends JsonToCSVService {
     static {
         sc = new Scanner(System.in);
         jsonToStudentsObjct = new Gson();
-        executor = Executors.newFixedThreadPool(10);
     }
 
     private static class Task implements Callable<String> {
@@ -89,6 +87,7 @@ public class JsonToCSVServiceV2 extends JsonToCSVService {
 
         // exucute all chunks
         try {
+            executor = Executors.newFixedThreadPool(5);
             executor.invokeAll(tasks);
             System.out.println("\ninfo ==> All Tasks completed.. (Json fiels loaded to DB)");
         } catch (InterruptedException e) {
